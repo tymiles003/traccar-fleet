@@ -1,0 +1,11 @@
+jhipster-dev-postgresql:
+  container_name: fleet-dev-postgresql
+  image: postgres:9.4.5
+  # volumes:
+  # - ~/volumes/jhipster/fleet/dev-postgresql/:/var/lib/postgresql/
+  environment:
+  - POSTGRES_USER=fleet
+  - POSTGRES_PASSWORD=
+  ports:
+  - "5432:5432"
+

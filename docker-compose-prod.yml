@@ -1,0 +1,11 @@
+jhipster-prod-postgresql:
+  container_name: fleet-prod-postgresql
+  image: postgres:9.4.5
+  # volumes:
+  # - ~/volumes/jhipster/fleet/prod-postgresql/:/var/lib/postgresql/
+  environment:
+  - POSTGRES_USER=fleet
+  - POSTGRES_PASSWORD=
+  ports:
+  - "5432:5432"
+
