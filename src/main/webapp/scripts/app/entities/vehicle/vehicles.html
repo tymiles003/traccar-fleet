@@ -1,0 +1,64 @@
+<div>
+    <h2 translate="fleetApp.vehicle.home.title">Vehicles</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="vehicle.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="fleetApp.vehicle.home.createLabel">Create a new Vehicle</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="fleetApp.vehicle.plate">Plate</th>
+                    <th translate="fleetApp.vehicle.activated">Activated</th>
+                    <th translate="fleetApp.vehicle.externalId">ExternalId</th>
+                    <th translate="fleetApp.vehicle.company">company</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="vehicle in vehicles track by vehicle.id">
+                    <td><a ui-sref="vehicle.detail({id:vehicle.id})">{{vehicle.id}}</a></td>
+                    <td>{{vehicle.plate}}</td>
+                    <td>{{vehicle.activated}}</td>
+                    <td>{{vehicle.externalId}}</td>
+                    <td>
+                        <a ui-sref="company.detail({id:vehicle.companyId})">{{vehicle.companyName}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="vehicle.detail({id:vehicle.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="vehicle.edit({id:vehicle.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="vehicle.delete({id:vehicle.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
